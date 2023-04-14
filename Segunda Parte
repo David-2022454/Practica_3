@@ -1,0 +1,37 @@
+/*
+Fundación Kinal
+Centro Educativo Técnico Labral Kinal 
+Electrónica
+Grado: Quinto
+Sección: A
+Curso: Taller de Electrónica Digital y Reparación de Computadoras I
+Nombre: Juan David Tejada Peñuela
+Carné: 2022454 
+*/
+#define PMO(pin) pinMode(pin,OUTPUT)
+#define DW1(pin) digitalWrite(pin,HIGH)
+#define DW0(pin) digitalWrite(pin,LOW)  
+int NO_LEDS = 12;
+int Led = 2;
+
+void setup() {
+  for (int i = Led ; i < NO_LEDS ; i++){
+    PMO(i);
+  }
+}
+
+void loop() {
+for (int i = Led ; i < NO_LEDS ; i++){
+    DW1(i);
+    delay(100);
+    DW0(i);
+    delay(50);
+  }
+  for (int i = NO_LEDS -1 ; i > Led ; i--){
+    DW1(i);
+    delay(100);
+    DW0(i);
+    delay(50);
+  }
+
+}
