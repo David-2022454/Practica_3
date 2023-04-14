@@ -1,0 +1,63 @@
+/*
+Fundación Kinal
+Centro Educativo Técnico Labral Kinal 
+Electrónica
+Grado: Quinto
+Sección: A
+Curso: Taller de Electrónica Digital y Reparación de Computadoras I
+Nombre: Juan David Tejada Peñuela
+Carné: 2022454 
+*/
+
+#define PMI(pin) pinMode(pin,INPUT)
+#define PMO(pin) pinMode(pin,OUTPUT)
+#define DG1(pin) digitalWrite(pin,HIGH)
+#define DG0(pin) digitalWrite(pin,LOW)
+#define PB_1 4
+#define PB_2 3
+#define R 5
+#define G 6
+#define B 7
+int PUSH1;
+int PUSH2;
+
+
+void setup() {
+  PMI(4);
+  PMI(3);
+  PMO(5);
+  PMO(6);
+  PMO(7);
+}
+
+void loop() {
+PUSH1 = digitalRead(PB_1);
+PUSH2 = digitalRead(PB_2);
+if (PUSH1 == HIGH && PUSH2 == LOW) {
+DG1(R);
+DG1(G);
+DG0(B);
+}
+delay(500);
+if (PUSH1 == LOW && PUSH2 == HIGH) {
+DG0(R);
+DG1(G);
+DG1(B);
+}
+if (PUSH1 == HIGH && PUSH2 == HIGH) {
+DG1(R);
+DG0(G);
+DG1(B);
+}
+if (PUSH1 == LOW && PUSH2 == LOW) {
+DG1(R);
+delay (500);
+DG0(R);
+DG1(G);
+delay (500);
+DG0(G);
+DG1(B);
+delay (500); 
+DG0(B);
+}
+}
